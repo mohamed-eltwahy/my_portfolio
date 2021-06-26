@@ -127,7 +127,7 @@ class _MainPageState extends State<MainPage> {
         ],
       ),
 
-      // drawer: MediaQuery.of(context).size.width < 760 ? _appBarMobile() : null,
+      drawer: MediaQuery.of(context).size.width < 760 ? _appBarMobile() : null,
       body: Container(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
@@ -167,53 +167,49 @@ class _MainPageState extends State<MainPage> {
     );
   }
 
-  // Widget? _appBarTabDesktop() {
-  //   return AppBar(
-  //     elevation: 0.0,
-  //     backgroundColor: Colors.transparent,
-  //     title: MediaQuery.of(context).size.width < 740
-  //         ? EntranceFader(
-  //             duration: Duration(seconds: 1),
-  //             offset: Offset(0, -20),
-  //             delay: Duration(seconds: 3),
-  //             child: NavBarLogo())
-  //         : EntranceFader(
-  //             offset: Offset(0, -20),
-  //             duration: Duration(seconds: 1),
-  //             delay: Duration(seconds: 3),
-  //             child: NavBarLogo(
-  //               height: MediaQuery.of(context).size.height * 0.035,
-  //             ),
-  //           ),
-  //     actions: [
-  //       for (int i = 0; i < _sectionsName.length; i++)
-  //         _appBarActions(_sectionsName[i], i, _sectionsIcons[i]),
-  //       EntranceFader(
-  //         offset: Offset(0, -20),
-  //         delay: Duration(seconds: 3),
-  //         duration: Duration(seconds: 1),
-  //         child: Padding(
-  //           padding: const EdgeInsets.all(8.0),
-  //           child: MaterialButton(
-  //             hoverColor: kPrimaryColor.withAlpha(150),
-  //             shape: RoundedRectangleBorder(
-  //                 borderRadius: BorderRadius.circular(5.0),
-  //                 side: BorderSide(color: kPrimaryColor)),
-  //             onPressed: () {
-  //               html.window.open(
-  //                   'https://drive.google.com/file/d/1i1OV799pVKC1C-5qgCdc29q3UIn7ekhj/view?usp=sharing',
-  //                   "pdf");
-  //             },
-  //             child: Text(
-  //               "Resume",
-  //               style: GoogleFonts.montserrat(
-  //                 fontWeight: FontWeight.w200,
-  //               ),
-  //             ),
-  //           ),
-  //         ),
-  //       ),
-  //     ],
-  //   );
-  // }
+   Widget _appBarMobile() {
+    return Drawer(
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(0, 25.0, 0, 0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Center(
+              child: NavBarLogo(
+                height: 28,
+              ),
+            ),
+            for (int i = 0; i < _sectionsName.length; i++)
+              _appBarActions(_sectionsName[i], i, _sectionsIcons[i]),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: MaterialButton(
+                hoverColor: kPrimaryColor.withAlpha(150),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(5.0),
+                    side: BorderSide(color: kPrimaryColor)),
+                onPressed: () {
+                  launchURL(
+                      'https://drive.google.com/file/d/1i1OV799pVKC1C-5qgCdc29q3UIn7ekhj/view?usp=sharing',
+                      );
+                },
+                child: ListTile(
+                  leading: Icon(
+                    Icons.book,
+                    color: Colors.red,
+                  ),
+                  title: Text(
+                    "Resume",
+                    style: GoogleFonts.montserrat(
+                      fontWeight: FontWeight.w200,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
 }
