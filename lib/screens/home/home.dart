@@ -18,15 +18,18 @@ class _HomePageState extends State<HomePage> {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
 
-    return  Container(
+    return Padding(
+      padding: EdgeInsets.only(top: 20),
+      child: Container(
         height: height,
-        width: double.infinity,
+        width: width,
         child: Row(
+          mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Container(
-              margin: EdgeInsets.fromLTRB(width * 0.07, height * 0.12, 0, 0),
+              margin: EdgeInsets.fromLTRB(width * 0.05, height * 0.12, 0, 0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -49,7 +52,7 @@ class _HomePageState extends State<HomePage> {
                     height: height * 0.01,
                   ),
                   Text(
-                    "Muhammad",
+                    "Mohammed",
                     style: GoogleFonts.montserrat(
                         fontSize: height * 0.055,
                         fontWeight: FontWeight.w100,
@@ -100,22 +103,26 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
             ),
-            Opacity(
-              opacity: 0.7,
-              child: EntranceFader(
-                offset: Offset(0, 0),
-                delay: Duration(seconds: 1),
-                duration: Duration(milliseconds: 800),
-                child: Image.asset(
-                  'assets/9.png',
-                  fit: BoxFit.contain,
-                  height: 250,
+            Padding(
+              padding: EdgeInsets.only(top: 50, right: 10),
+              child: Opacity(
+                opacity: 0.7,
+                child: EntranceFader(
+                  offset: Offset(0, 0),
+                  delay: Duration(seconds: 1),
+                  duration: Duration(milliseconds: 800),
+                  child: Image.asset(
+                    'assets/22.png',
+                    fit: BoxFit.contain,
+                    height: 220,
+                    width: 220,
+                  ),
                 ),
               ),
             ),
           ],
         ),
-    
+      ),
     );
   }
 }

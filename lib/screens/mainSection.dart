@@ -3,7 +3,6 @@ import 'package:my_portfolio/screens/about/about.dart';
 import 'package:my_portfolio/screens/contact/contact.dart';
 import 'package:my_portfolio/screens/home/home.dart';
 import 'package:my_portfolio/screens/portfolio/portfolio.dart';
-import 'package:my_portfolio/screens/services/services.dart';
 import 'package:my_portfolio/screens/widgets/arrowOnTop.dart';
 import 'package:my_portfolio/screens/widgets/entranceFader.dart';
 import 'package:my_portfolio/screens/widgets/footer.dart';
@@ -31,7 +30,6 @@ class _MainPageState extends State<MainPage> {
   final List<String> _sectionsName = [
     "Home",
     "About",
-    "Services",
     "Projects",
     "Contact"
   ];
@@ -53,21 +51,19 @@ class _MainPageState extends State<MainPage> {
       return HomePage();
     } else if (i == 1) {
       return About();
-    } else if (i == 2) {
-      return Services();
-    } else if (i == 3) {
+    }  else if (i == 2) {
       return Portfolio();
-    } else if (i == 4) {
+    } else if (i == 3) {
       return Contact();
-    } else if (i == 5) {
+    } else if (i == 4) {
       return SizedBox(
         height: 40.0,
       );
-    } else if (i == 6) {
+    } else if (i == 5) {
       return ArrowOnTop(
         onPressed: () => _scroll(0),
       );
-    } else if (i == 7) {
+    } else if (i == 6) {
       return Footer();
     } else {
       return Container();
@@ -76,57 +72,61 @@ class _MainPageState extends State<MainPage> {
 
   @override
   Widget build(BuildContext context) {
+    print('widthhhhh' + MediaQuery.of(context).size.width.toString());
     return Scaffold(
       backgroundColor: Colors.black,
       extendBodyBehindAppBar: true,
-      appBar: AppBar(
-        elevation: 0.0,
-        backgroundColor: Colors.transparent,
-        title: MediaQuery.of(context).size.width < 740
-            ? EntranceFader(
-                duration: Duration(seconds: 1),
-                offset: Offset(0, -20),
-                delay: Duration(seconds: 3),
-                child: NavBarLogo())
-            : EntranceFader(
-                offset: Offset(0, -20),
-                duration: Duration(seconds: 1),
-                delay: Duration(seconds: 3),
-                child: NavBarLogo(
-                  height: MediaQuery.of(context).size.height * 0.035,
-                ),
-              ),
-        actions: [
-          for (int i = 0; i < _sectionsName.length; i++)
-            _appBarActions(_sectionsName[i], i, _sectionsIcons[i]),
-          EntranceFader(
-            offset: Offset(0, -20),
-            delay: Duration(seconds: 3),
-            duration: Duration(seconds: 1),
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: MaterialButton(
-                hoverColor: kPrimaryColor.withAlpha(150),
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(5.0),
-                    side: BorderSide(color: kPrimaryColor)),
-                onPressed: () {
-                  html.window.open(
-                      'https://drive.google.com/file/d/1i1OV799pVKC1C-5qgCdc29q3UIn7ekhj/view?usp=sharing',
-                      "pdf");
-                },
-                child: Text(
-                  "Resume",
-                  style: GoogleFonts.montserrat(
-                    fontWeight: FontWeight.w200,
+      appBar: MediaQuery.of(context).size.width < 760
+          ? AppBar(
+              backgroundColor: Colors.black,
+            )
+          : AppBar(
+              elevation: 0.0,
+              backgroundColor: Colors.transparent,
+              title: MediaQuery.of(context).size.width < 450
+                  ? EntranceFader(
+                      duration: Duration(seconds: 1),
+                      offset: Offset(0, -20),
+                      delay: Duration(seconds: 2),
+                      child: NavBarLogo())
+                  : EntranceFader(
+                      offset: Offset(0, -20),
+                      duration: Duration(seconds: 1),
+                      delay: Duration(seconds: 2),
+                      child: NavBarLogo(
+                        height: MediaQuery.of(context).size.height * 0.035,
+                      ),
+                    ),
+              actions: [
+                for (int i = 0; i < _sectionsName.length; i++)
+                  _appBarActions(_sectionsName[i], i, _sectionsIcons[i]),
+                EntranceFader(
+                  offset: Offset(0, -20),
+                  delay: Duration(seconds: 2),
+                  duration: Duration(seconds: 1),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: MaterialButton(
+                      hoverColor: kPrimaryColor.withAlpha(150),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(5.0),
+                          side: BorderSide(color: kPrimaryColor)),
+                      onPressed: () {
+                        html.window.open(
+                            'https://drive.google.com/file/d/1i1OV799pVKC1C-5qgCdc29q3UIn7ekhj/view?usp=sharing',
+                            "pdf");
+                      },
+                      child: Text(
+                        "Resume",
+                        style: GoogleFonts.montserrat(
+                          fontWeight: FontWeight.w200,
+                        ),
+                      ),
+                    ),
                   ),
                 ),
-              ),
+              ],
             ),
-          ),
-        ],
-      ),
-
       drawer: MediaQuery.of(context).size.width < 760 ? _appBarMobile() : null,
       body: Container(
         height: MediaQuery.of(context).size.height,
@@ -151,7 +151,7 @@ class _MainPageState extends State<MainPage> {
   Widget _appBarActions(String childText, int index, IconData icon) {
     return EntranceFader(
       offset: Offset(0, -20),
-      delay: Duration(seconds: 3),
+      delay: Duration(seconds: 2),
       duration: Duration(seconds: 1),
       child: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -167,7 +167,7 @@ class _MainPageState extends State<MainPage> {
     );
   }
 
-   Widget _appBarMobile() {
+  Widget _appBarMobile() {
     return Drawer(
       child: Padding(
         padding: const EdgeInsets.fromLTRB(0, 25.0, 0, 0),
@@ -190,8 +190,8 @@ class _MainPageState extends State<MainPage> {
                     side: BorderSide(color: kPrimaryColor)),
                 onPressed: () {
                   launchURL(
-                      'https://drive.google.com/file/d/1i1OV799pVKC1C-5qgCdc29q3UIn7ekhj/view?usp=sharing',
-                      );
+                    'https://drive.google.com/file/d/1i1OV799pVKC1C-5qgCdc29q3UIn7ekhj/view?usp=sharing',
+                  );
                 },
                 child: ListTile(
                   leading: Icon(
