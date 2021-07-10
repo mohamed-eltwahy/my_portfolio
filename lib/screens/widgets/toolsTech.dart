@@ -16,7 +16,7 @@ class ToolsTech extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   for (int i = 0; i < kTools.length; i++)
                     ToolTechWidget(

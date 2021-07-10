@@ -26,7 +26,9 @@ class _HomePageState extends State<HomePage> {
         child: Row(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: MediaQuery.of(context).size.width < 760
+              ? MainAxisAlignment.start
+              : MainAxisAlignment.spaceBetween,
           children: [
             Container(
               margin: EdgeInsets.fromLTRB(width * 0.05, height * 0.12, 0, 0),
@@ -39,7 +41,9 @@ class _HomePageState extends State<HomePage> {
                       Text(
                         "HEY THERE! ",
                         style: GoogleFonts.montserrat(
-                            fontSize: height * 0.025,
+                            fontSize: MediaQuery.of(context).size.width < 760
+                                ? 18
+                                : height * 0.025,
                             fontWeight: FontWeight.w200),
                       ),
                       Image.asset(
@@ -54,14 +58,19 @@ class _HomePageState extends State<HomePage> {
                   Text(
                     "Mohammed",
                     style: GoogleFonts.montserrat(
-                        fontSize: height * 0.055,
+                        fontSize: MediaQuery.of(context).size.width < 760
+                            ? 18
+                            : height * 0.055,
                         fontWeight: FontWeight.w100,
                         letterSpacing: 1.1),
                   ),
                   Text(
                     "Saber",
                     style: GoogleFonts.montserrat(
-                        fontSize: height * 0.055, fontWeight: FontWeight.w500),
+                        fontSize: MediaQuery.of(context).size.width < 760
+                            ? 16
+                            : height * 0.055,
+                        fontWeight: FontWeight.w500),
                   ),
                   EntranceFader(
                     offset: Offset(-10, 0),
@@ -77,7 +86,10 @@ class _HomePageState extends State<HomePage> {
                             isRepeatingAnimation: true,
                             speed: Duration(milliseconds: 80),
                             textStyle: GoogleFonts.montserrat(
-                                fontSize: height * 0.03,
+                                fontSize:
+                                    MediaQuery.of(context).size.width < 760
+                                        ? 18
+                                        : height * 0.03,
                                 fontWeight: FontWeight.w200),
                             text: [
                               " Flutter Developer",
@@ -104,7 +116,9 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(top: 50, right: 10),
+              padding: EdgeInsets.only(
+                  top: MediaQuery.of(context).size.width < 760 ? 80 : 50,
+                  right: 10),
               child: Opacity(
                 opacity: 0.7,
                 child: EntranceFader(
@@ -114,8 +128,8 @@ class _HomePageState extends State<HomePage> {
                   child: Image.asset(
                     'assets/22.png',
                     fit: BoxFit.contain,
-                    height: 220,
-                    width: 220,
+                    height: MediaQuery.of(context).size.width < 760 ? 150 : 220,
+                    width: MediaQuery.of(context).size.width < 760 ? 150 : 220,
                   ),
                 ),
               ),

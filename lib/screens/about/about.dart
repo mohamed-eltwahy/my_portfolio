@@ -17,7 +17,7 @@ class About extends StatelessWidget {
           horizontal: width * 0.02, vertical: height * 0.02),
       color: Colors.grey[900],
       child: Column(
-        mainAxisSize:MainAxisSize.min ,
+        mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
@@ -46,14 +46,11 @@ class About extends StatelessWidget {
               width >= 1185 ? Expanded(child: ToolsTech()) : ToolsTech()
             ],
           ),
-          
-        
           Center(
             child: NavBarLogo(
-                  height: height * 0.04,
-                ),
+              height: height * 0.04,
+            ),
           )
-        
         ],
       ),
     );
